@@ -29,15 +29,16 @@ rescue LoadError => err
 end
 
 # Log ActiveRecord to STDOUT if in Rails
+require 'logger'
+logger = Logger.new(STDOUT)
 if ENV.include?('RAILS_ENV')
   if !Object.const_defined?('RAILS_DEFAULT_LOGGER')
-    require 'logger'
-    Object.const_set('RAILS_DEFAULT_LOGGER', Logger.new(STDOUT))
+    Object.const_set('RAILS_DEFAULT_LOGGER', logger)
   end
 elsif defined?(Rails) && !Rails.env.nil?
   if Rails.logger && Rails.respond_to?(:logger=)
-    Rails.logger = Logger.new(STDOUT)
+    Rails.logger = logger
   end
 elsif defined?(ActiveRecord)
-  ActiveRecord::Base.logger = Rails.logger
+  ActiveRecord::Base.logger = logger
 end

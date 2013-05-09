@@ -7,19 +7,6 @@ IRB.conf[:SAVE_HISTORY] = 100
 IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb-save-history"
 IRB.conf[:AUTO_INDENT] = true
 
-# Wirble is a plugin to colorize your irb, it's installed from a gem (gem install -y wirble)
-require 'rubygems'
-begin
-  # load wirble
-  require 'wirble'
-
-  # start wirble (with color)
-  Wirble.init
-  Wirble.colorize
-rescue LoadError => err
-  warn "Couldn't load Wirble: #{err}"
-end
-
 # use HIRB if available
 begin
   require 'hirb'
@@ -28,17 +15,13 @@ rescue LoadError => err
   warn "No Hirb: #{err}"
 end
 
-# Log ActiveRecord to STDOUT if in Rails
-require 'logger'
-logger = Logger.new(STDOUT)
-if ENV.include?('RAILS_ENV')
-  if !Object.const_defined?('RAILS_DEFAULT_LOGGER')
-    Object.const_set('RAILS_DEFAULT_LOGGER', logger)
-  end
-elsif defined?(Rails) && !Rails.env.nil?
-  if Rails.logger && Rails.respond_to?(:logger=)
-    Rails.logger = logger
-  end
-elsif defined?(ActiveRecord)
-  ActiveRecord::Base.logger = logger
+# Log Rails and/or ActiveRecord to STDOUT
+if defined?(Rails) && Rails.respond_to?(:logger=)
+  require 'logger'
+  Rails.logger = Logger.new(STDOUT)
+end
+
+if defined?(ActiveRecord) && ActiveRecord::Base.respond_to?(:logger=)
+  require 'logger'
+  ActiveRecord::Base.logger = Logger.new(STDOUT)
 end

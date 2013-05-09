@@ -35,8 +35,9 @@ if ENV.include?('RAILS_ENV')
     Object.const_set('RAILS_DEFAULT_LOGGER', Logger.new(STDOUT))
   end
 elsif defined?(Rails) && !Rails.env.nil?
-  if Rails.logger
+  if Rails.logger && Rails.respond_to?(:logger=)
     Rails.logger = Logger.new(STDOUT)
-    ActiveRecord::Base.logger = Rails.logger
   end
+elsif defined?(ActiveRecord)
+  ActiveRecord::Base.logger = Rails.logger
 end

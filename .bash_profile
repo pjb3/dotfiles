@@ -6,9 +6,9 @@ export VISUAL=vim
 export BUNDLE_PATH=.bundle
 
 # Put the executables installed by gems into this directory that is on our path
-export BUNDLE_BIN=~/.bundle/bin
+export BUNDLE_BIN=.bundle/bin
 
-export PATH=~/bin:~/.bundle/bin:/usr/local/share/npm/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
+export PATH=~/bin:.bundle/bin:/usr/local/share/npm/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
 
 export LESS='-R'
 

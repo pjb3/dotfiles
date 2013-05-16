@@ -2,13 +2,7 @@
 export EDITOR=vim
 export VISUAL=vim
 
-# Install gems installed by bundler (project-specific gems) into .bundle instead of $GEM_HOME
-export BUNDLE_PATH=.bundle
-
-# Put the executables installed by gems into this directory that is on our path
-export BUNDLE_BIN=.bundle/bin
-
-export PATH=~/bin:.bundle/bin:/usr/local/share/npm/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
+export PATH=~/bin:/usr/local/share/npm/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
 
 export LESS='-R'
 
@@ -48,13 +42,6 @@ alias gs='git status'
 alias gcom='git co master'
 alias gpp='git pull --rebase && git push'
 alias shipit='git pull --rebase && git push && cap deploy'
-
-# I don't understand why, but when you have BUNDLE_BIN set to something,
-# bundler still puts the bin stubs in .bundle/bin in the project
-# This makes sure we always use --binstubs=$BUNDLE_BIN when bundle installing
-# which make bundler set BUNDLE_BIN to $BUNDLE_BIN in the project config,
-# which prevents bin stubs from being written to .bundle/bin
-alias bi='bundle install --binstubs=$BUNDLE_BIN'
 
 # Source all files in .bash_profile.d
 # These are meant to contain environemnt settings that I don't want in git

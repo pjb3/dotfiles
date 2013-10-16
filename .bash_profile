@@ -40,6 +40,9 @@ alias gcom='git co master'
 alias gpp='git pull --rebase && git push'
 alias shipit='git pull --rebase && git push && cap deploy'
 
+export ARCHFLAGS='-arch x86_64'
+export CC=/usr/local/bin/gcc-4.2
+
 # Source all files in .bash_profile.d
 # These are meant to contain environemnt settings that I don't want in git
 if [ -d .bash_profile.d ]; then

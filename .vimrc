@@ -5,7 +5,7 @@ filetype plugin indent on
 runtime macros/matchit.vim
 
 syntax enable
-set background=light
+set background=dark
 colorscheme solarized
 
 set tabstop=2

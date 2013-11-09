@@ -2,21 +2,18 @@
 export EDITOR=vim
 export VISUAL=vim
 
-export PATH=~/bin:/usr/local/share/npm/bin:/usr/local/heroku/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
+export PATH=~/bin:~/.rbenv/bin:/usr/local/share/npm/bin:/usr/local/heroku/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
 
 export LESS='-R'
 
-# Enable bash completion for git commands/branches
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-        . `brew --prefix`/etc/bash_completion
-fi
 source /usr/local/etc/bash_completion.d/git-completion.bash
+source /usr/local/etc/bash_completion.d/git-prompt.sh
 
 # Load rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # Enable bash completion for rbenv commands
-source /usr/local/Cellar/rbenv/0.4.0/completions/rbenv.bash
+source ~/.rbenv/completions/rbenv.bash
 __rbenv_ps1 ()
 {
   rbenv_ruby_version=`rbenv version | sed -e 's/ .*//'`

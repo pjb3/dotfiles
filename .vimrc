@@ -6,7 +6,7 @@ runtime macros/matchit.vim
 
 syntax enable
 set background=dark
-colorscheme solarized
+colorscheme vividchalk
 
 set tabstop=2
 set softtabstop=2

@@ -12,7 +12,7 @@ begin
   require 'hirb'
   Hirb::View.enable
 rescue LoadError => err
-  warn "No Hirb: #{err}"
+  #warn "No Hirb: #{err}"
 end
 
 # Log Rails and/or ActiveRecord to STDOUT

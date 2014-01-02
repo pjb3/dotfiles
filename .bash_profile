@@ -6,8 +6,9 @@ export PATH=~/bin:~/.rbenv/bin:/usr/local/share/npm/bin:/usr/local/heroku/bin:/u
 
 export LESS='-R'
 
+# Enable bash completion for git commands/branches
+source /usr/local/etc/bash_completion
 source /usr/local/etc/bash_completion.d/git-completion.bash
-source /usr/local/etc/bash_completion.d/git-prompt.sh
 
 # Load rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
@@ -42,6 +43,8 @@ alias shipit='git pull --rebase && git push && cap deploy'
 
 export ARCHFLAGS='-arch x86_64'
 export CC=/usr/local/bin/gcc-4.2
+
+export PGUSER='postgres'
 
 # Source all files in .bash_profile.d
 # These are meant to contain environemnt settings that I don't want in git

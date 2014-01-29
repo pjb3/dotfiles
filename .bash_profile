@@ -2,8 +2,31 @@
 export EDITOR=vim
 export VISUAL=vim
 
-export PATH=~/bin:~/.rbenv/bin:/usr/local/share/npm/bin:/usr/local/heroku/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
+# my bin
+PATH+=:~/bin
 
+# rbenv
+PATH+=:~/.rbenv/bin
+
+# postgres
+export PGHOME=/Applications/Postgres93.app/Contents/MacOS
+PATH+=:$PGHOME/bin
+
+# node
+PATH+=:/usr/local/share/npm/bin
+
+# heroku
+PATH+=:/usr/local/heroku/bin
+
+# homebrew
+PATH+=:/usr/local/bin
+
+# unix
+PATH+=:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
+
+export PATH
+
+# pretty colors
 export LESS='-R'
 
 # Enable bash completion for git commands/branches
@@ -40,11 +63,6 @@ alias gs='git status'
 alias gcom='git co master'
 alias gpp='git pull --rebase && git push'
 alias shipit='git pull --rebase && git push && cap deploy'
-
-export ARCHFLAGS='-arch x86_64'
-export CC=/usr/local/bin/gcc-4.2
-
-export PGUSER='postgres'
 
 # Source all files in .bash_profile.d
 # These are meant to contain environemnt settings that I don't want in git

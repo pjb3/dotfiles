@@ -1,5 +1,5 @@
 [push]
-	default = matching
+	default = current
 [alias]
   co = checkout
   com = checkout master

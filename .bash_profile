@@ -3,7 +3,7 @@ export EDITOR=vim
 export VISUAL=vim
 
 # my bin
-PATH+=:~/bin
+PATH=~/bin
 
 # rbenv
 PATH+=:~/.rbenv/bin
@@ -11,9 +11,6 @@ PATH+=:~/.rbenv/bin
 # postgres
 export PGHOME=/Applications/Postgres93.app/Contents/MacOS
 PATH+=:$PGHOME/bin
-
-# node
-PATH+=:/usr/local/share/npm/bin
 
 # heroku
 PATH+=:/usr/local/heroku/bin
@@ -23,6 +20,9 @@ PATH+=:/usr/local/bin
 
 # unix
 PATH+=:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
+
+# current directory bin
+PATH+=:bin
 
 export PATH
 

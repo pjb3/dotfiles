@@ -1,6 +1,5 @@
-# vim FTW
-export EDITOR=vim
-export VISUAL=vim
+export EDITOR='subl -w'
+export VISUAL='subl -w'
 
 # my bin
 PATH=~/bin
@@ -59,10 +58,8 @@ export PS1="$RED\$(__rbenv_ps1) $GREEN\w$YELLOW\$(__git_ps1 "[%s]")$OFF \$ "
 export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
 
 # Git Shortcuts
-alias gs='git status'
-alias gcom='git co master'
-alias gpp='git pull --rebase && git push'
-alias shipit='git pull --rebase && git push && cap deploy'
+alias gs='git status '
+alias gcom='git checkout master'
 
 # Source all files in .bash_profile.d
 # These are meant to contain environemnt settings that I don't want in git

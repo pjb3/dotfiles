@@ -1,3 +1,4 @@
 *.swp
 .ls_profile
 .netrwhist
+.DS_Store

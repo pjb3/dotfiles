@@ -8,7 +8,7 @@ PATH=~/bin
 PATH+=:~/.rbenv/bin
 
 # postgres
-export PGHOME=/Applications/Postgres93.app/Contents/MacOS
+export PGHOME=/Applications/Postgres.app/Contents/Versions/9.3
 PATH+=:$PGHOME/bin
 
 # heroku

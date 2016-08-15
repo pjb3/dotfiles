@@ -4,7 +4,7 @@
   co = checkout
   ci = commit
   st = status
-  br = branch
+  br = for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
   com = checkout master
   hist = log --pretty=format:'%C(yellow)%h %Cred%ad %Creset| %s%Cblue%d %Cgreen[%an]' --graph --date=short
   ack = "!git ls-files | xargs ack"
@@ -12,10 +12,17 @@
 	name = Paul Barry
 	email = mail@paulbarry.com
 [core]
-	autocrlf = input
+	autocrlf = false
 	safecrlf = true
 	editor = subl -w
-	excludesfile = ~/.gitignore
+	excludesfile = /Users/paul/.gitignore
 [filter "media"]
-	clean = git-media-clean %f
-	smudge = git-media-smudge %f
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+[github]
+	user = pjb3
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true

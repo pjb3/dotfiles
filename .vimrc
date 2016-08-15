@@ -109,6 +109,7 @@ endif
 
 " Because I am an idiot
 abbr familiy family
+abbr restaruant restaurant
 
 " Settings for VimClojure
 let vimclojure#HighlightBuiltins=1

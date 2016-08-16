@@ -73,8 +73,8 @@ alias bunl='bundle'
 
 # Source all files in .bash_profile.d
 # These are meant to contain environment settings that I don't want in git
-if [ -d .bash_profile.d ]; then
-  for f in `ls -a .bash_profile.d | egrep '\.sh$'`; do
-    source .bash_profile.d/$f
+if [ -d ~/.bash_profile.d ]; then
+  for f in `ls -a ~/.bash_profile.d | egrep '\.sh$'`; do
+    source ~/.bash_profile.d/$f
   done
 fi

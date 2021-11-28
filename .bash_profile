@@ -1,5 +1,6 @@
 export EDITOR='subl -w'
 export VISUAL='subl -w'
+export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # my bin
 PATH=~/bin
@@ -7,15 +8,21 @@ PATH=~/bin
 # rbenv
 PATH+=:~/.rbenv/bin
 
-export PGHOME=/Applications/Postgres.app/Contents/Versions/9.5
+export PGHOME=/Applications/Postgres.app/Contents/Versions/latest
 PATH+=:$PGHOME/bin
+
+# Android
+export ANDROID_HOME=${HOME}/Library/Android/sdk
+PATH+=:${ANDROID_HOME}/tools
+PATH+=:${ANDROID_HOME}/platform-tools
 
 # Go Lang
 export GOPATH=$HOME/go
 PATH+=:$GOPATH/bin
 
-# heroku
-PATH+=:/usr/local/heroku/bin
+# Node
+export NODE_PATH="/usr/local/lib/node_modules"
+PATH+=:$NODE_PATH
 
 # homebrew
 PATH+=:/usr/local/bin:/usr/local/sbin
@@ -27,8 +34,6 @@ PATH+=:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
 PATH+=:bin
 
 export PATH
-
-export ANDROID_HOME=/usr/local/opt/android-sdk
 
 # pretty colors
 export LESS='-R'
@@ -66,10 +71,14 @@ export HISTFILE=~/.bash_eternal_history
 # This will set the title of the iTerm tab to the name of the current directory
 export PROMPT_COMMAND='history -a; echo -ne "\033]0;${PWD##*/}\007"'
 
+# Will make Elixir console (iex) remember history
+export ERL_AFLAGS="-kernel shell_history enabled"
+
 # Git Shortcuts
 alias gs='git status '
 alias gcom='git checkout master'
 alias bunl='bundle'
+alias gb='git --no-pager branch -l --sort=committerdate'
 
 # Source all files in .bash_profile.d
 # These are meant to contain environment settings that I don't want in git
@@ -78,3 +87,9 @@ if [ -d ~/.bash_profile.d ]; then
     source ~/.bash_profile.d/$f
   done
 fi
+
+export PGDATABASE=spark_dev
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

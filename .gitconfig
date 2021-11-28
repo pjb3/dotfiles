@@ -10,7 +10,7 @@
   ack = "!git ls-files | xargs ack"
 [user]
 	name = Paul Barry
-	email = mail@paulbarry.com
+	email = pauljbarry3@gmail.com
 [core]
 	autocrlf = false
 	safecrlf = true
@@ -26,3 +26,8 @@
 	clean = git lfs clean %f
 	smudge = git lfs smudge %f
 	required = true
+	process = git-lfs filter-process
+[credential]
+	helper = osxkeychain
+[pull]
+	rebase = true

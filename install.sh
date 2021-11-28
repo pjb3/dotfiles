@@ -1,7 +1,7 @@
 #!/bin/bash
 
 for file in `ls -a | egrep '^\.\w'`; do
-  if [[ $file != ".git" ]] && && [[ $file != ".gitmodules" ]]; then
+  if [[ $file != ".git" ]] && [[ $file != ".gitmodules" ]]; then
     echo "~/$file -> ~/dotfiles/$file"
     ln -fns dotfiles/$file ~/$file
   fi

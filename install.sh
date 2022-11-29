@@ -7,11 +7,6 @@ for file in `ls -a | egrep '^\.\w'`; do
   fi
 done
 
-# Configure Sublime
-cd /Users/paul/Library/Application\ Support/Sublime\ Text\ 3/Packages/User
-rm Preferences.sublime-settings
-ln -s ~/dotfiles/Preferences.sublime-settings
-
 # Install rbenv
 git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
 git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build

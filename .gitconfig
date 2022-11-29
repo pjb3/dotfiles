@@ -14,7 +14,7 @@
 [core]
 	autocrlf = false
 	safecrlf = true
-	editor = subl -w
+	editor = code -w
 	excludesfile = /Users/paul/.gitignore
 [filter "media"]
 	required = true
@@ -23,8 +23,8 @@
 [github]
 	user = pjb3
 [filter "lfs"]
-	clean = git lfs clean %f
-	smudge = git lfs smudge %f
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
 	required = true
 	process = git-lfs filter-process
 [credential]

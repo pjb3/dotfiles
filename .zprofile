@@ -1,6 +1,5 @@
-export EDITOR='subl -w'
-export VISUAL='subl -w'
-export BASH_SILENCE_DEPRECATION_WARNING=1
+export EDITOR='code -w'
+export VISUAL='code -w'
 
 # my bin
 PATH=~/bin
@@ -8,6 +7,10 @@ PATH=~/bin
 # rbenv
 PATH+=:~/.rbenv/bin
 
+# pyenv
+PATH+=:~/.pyenv/shims
+
+# Postgres
 export PGHOME=/Applications/Postgres.app/Contents/Versions/latest
 PATH+=:$PGHOME/bin
 
@@ -25,7 +28,7 @@ export NODE_PATH="/usr/local/lib/node_modules"
 PATH+=:$NODE_PATH
 
 # homebrew
-PATH+=:/usr/local/bin:/usr/local/sbin
+PATH+=:/opt/homebrew/bin:/usr/local/bin:/usr/local/sbin
 
 # unix
 PATH+=:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
@@ -38,29 +41,27 @@ export PATH
 # pretty colors
 export LESS='-R'
 
-# Enable bash completion for git commands/branches
-source /usr/local/etc/bash_completion
-source /usr/local/etc/bash_completion.d/git-completion.bash
+# Enable zsh completion for git commands/branches
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
+
+# A bunch of random stuff you need to get rbenv to work on M1 macs
+# https://stackoverflow.com/a/69012677
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+export LDFLAGS="-L/opt/homebrew/opt/readline/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/readline/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/readline/lib/pkgconfig"
+export optflags="-Wno-error=implicit-function-declaration"
+export LDFLAGS="-L/opt/homebrew/opt/libffi/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/libffi/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/libffi/lib/pkgconfig"
 
 # Load rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-__rbenv_ps1 ()
-{
-  rbenv_ruby_version=`rbenv version | sed -e 's/ .*//'`
-  printf $rbenv_ruby_version
-}
-
-# Colors for prompt
-RED="\[\033[0;31m\]"
-YELLOW="\[\033[0;33m\]"
-GREEN="\[\033[0;32m\]"
-WHITE="\[\033[1;37m\]"
-BLACK="\[\033[0;30m\]"
-OFF="\[\033[0m\]"
-
-# Colorized prompt with rbenv version, git branch and current directory
-export PS1="$RED\$(__rbenv_ps1) $GREEN\w$YELLOW\$(__git_ps1 "[%s]")$OFF \$ "
 
 # This will make the history file keep everything, http://superuser.com/a/664061
 export HISTFILESIZE=
@@ -76,17 +77,9 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 
 # Git Shortcuts
 alias gs='git status '
-alias gcom='git checkout master'
+alias gcom='git checkout main'
 alias bunl='bundle'
 alias gb='git --no-pager branch -l --sort=committerdate'
-
-# Source all files in .bash_profile.d
-# These are meant to contain environment settings that I don't want in git
-if [ -d ~/.bash_profile.d ]; then
-  for f in `ls -a ~/.bash_profile.d | egrep '\.sh$'`; do
-    source ~/.bash_profile.d/$f
-  done
-fi
 
 export PGDATABASE=spark_dev
 

@@ -31,3 +31,8 @@
 	helper = osxkeychain
 [pull]
 	rebase = true
+[init]
+	defaultBranch = main
+[diff "lockb"]
+	textconv = bun
+	binary = true
